@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
@@ -14,7 +14,7 @@ const prices: Record<string, Record<string, number>> = {
   premium: { monthly: 99, yearly: 79 },
 };
 
-export default function OdemePage() {
+function OdemeContent() {
   const searchParams = useSearchParams();
   const plan = searchParams.get("plan") || "pro";
   const period = searchParams.get("period") || "monthly";
@@ -335,5 +335,15 @@ export default function OdemePage() {
         </div>
       </section>
     </div>
+  );
+}
+
+
+
+export default function OdemePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p>Yükleniyor...</p></div>}>
+      <OdemeContent />
+    </Suspense>
   );
 }
