@@ -9,6 +9,7 @@ const links = [
   { href: "/cocuk", label: "Çocuklar" },
   { href: "/platformlar", label: "Platformlar" },
   { href: "/quiz", label: "Quiz" },
+  { href: "/risk-hesapla", label: "Risk" },
   { href: "/fiyatlandirma", label: "Planlar" },
 ];
 
