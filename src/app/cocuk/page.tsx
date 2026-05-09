@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Çocuk & Genç Bölümü",
+  description: "Çocuklar ve gençler için sosyal medyada güvende kalma rehberi. Altın kurallar, senaryolar ve eğlenceli quizler.",
+  openGraph: {
+    title: "Çocuk & Genç Bölümü | Dijital Güvenlik",
+    description: "Sosyal medyada güvende kalmayı öğren! Eğlenceli quizler, ipuçları ve senaryolar.",
+  },
+};
 
 const goldenRules = [
   { emoji: "🔒", title: "Kişisel Bilgilerini Paylaşma", description: "Adın, adresin, okulun, telefon numaran gibi bilgileri internette hiç kimseyle paylaşma.", color: "bg-red-50 border-red-100" },

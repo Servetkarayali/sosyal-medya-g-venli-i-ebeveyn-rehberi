@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Ebeveyn Rehberi",
+  description: "Çocuğunuzun dijital güvenliği için kapsamlı ebeveyn rehberi. Gizlilik ayarları, siber zorbalık, ekran süresi yönetimi ve iletişim ipuçları.",
+  openGraph: {
+    title: "Ebeveyn Rehberi | Dijital Güvenlik",
+    description: "Çocuğunuzun dijital güvenliği için bilmeniz gereken her şey.",
+  },
+};
 
 const sections = [
   { id: "privacy", title: "Gizlilik Ayarları", description: "Çocuğunuzun hesaplarındaki gizlilik ayarlarını adım adım nasıl yapılandıracağınızı öğrenin.", color: "blue", tips: ["Hesabı 'Gizli' moda alın", "Konum paylaşımını kapatın", "Bilinmeyen kişilerden gelen mesajları filtreleyin", "İki faktörlü doğrulamayı aktifleştirin"] },

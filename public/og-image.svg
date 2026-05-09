@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#4f46e5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1050" cy="150" r="200" fill="white" opacity="0.05"/>
+  <circle cx="150" cy="500" r="150" fill="white" opacity="0.05"/>
+  <!-- Shield icon -->
+  <path d="M600 120 L600 320 C600 400 680 440 680 440 C680 440 760 400 760 320 L760 120 Z" fill="white" opacity="0.15" transform="translate(-80, 30) scale(0.8)"/>
+  <path d="M540 200 L540 350 C540 410 600 440 600 440 C600 440 660 410 660 350 L660 200 Z" fill="white" opacity="0.2"/>
+  <path d="M570 300 L590 320 L630 275" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Text -->
+  <text x="600" y="500" text-anchor="middle" fill="white" font-family="Inter, system-ui, sans-serif" font-size="52" font-weight="800">Sosyal Medya Güvenliği</text>
+  <text x="600" y="560" text-anchor="middle" fill="white" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="400" opacity="0.8">Ebeveynler ve Çocuklar İçin Etkileşimli Rehber</text>
+  <!-- Decorative dots -->
+  <circle cx="200" cy="100" r="4" fill="white" opacity="0.3"/>
+  <circle cx="250" cy="130" r="3" fill="white" opacity="0.2"/>
+  <circle cx="1000" cy="500" r="5" fill="white" opacity="0.3"/>
+  <circle cx="950" cy="530" r="3" fill="white" opacity="0.2"/>
+</svg>

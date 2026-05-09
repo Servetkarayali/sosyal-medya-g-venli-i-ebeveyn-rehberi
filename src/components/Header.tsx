@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 const navigation = [
   { key: "home", href: "/", label: "Ana Sayfa" },
@@ -26,7 +27,7 @@ export default function Header() {
   const [isLangOpen, setIsLangOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
@@ -35,7 +36,7 @@ export default function Header() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <span className="text-lg font-bold text-gray-900 hidden sm:block">Dijital Güvenlik</span>
+            <span className="text-lg font-bold text-gray-900 dark:text-white hidden sm:block">Dijital Güvenlik</span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-0.5">
@@ -47,6 +48,7 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <div className="relative">
               <button onClick={() => setIsLangOpen(!isLangOpen)} className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                 🇹🇷

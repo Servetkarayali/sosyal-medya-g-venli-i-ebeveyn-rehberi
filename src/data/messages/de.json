@@ -8,12 +8,231 @@
     "parent": "Elternratgeber",
     "child": "Kinderbereich",
     "quiz": "Quiz & Tests",
+    "platforms": "Plattformen",
+    "risk": "Risiko-Score",
+    "contract": "Vertrag",
     "emergency": "Notfall"
+  },
+  "home": {
+    "title": "Social-Media-Sicherheit",
+    "subtitle": "Ihr Leitfaden für Sicherheit in der digitalen Welt",
+    "description": "Lernen Sie, soziale Medien sicher zu nutzen. Separate Bereiche für Eltern und Kinder, interaktive Tests und praktische Tipps.",
+    "selectRole": "Wählen Sie die Option, die Sie am besten beschreibt",
+    "badge": "Digitaler Sicherheitsleitfaden",
+    "cta_explore": "Leitfaden entdecken",
+    "cta_quiz": "Quiz lösen",
+    "parentCard": {
+      "title": "Ich bin ein Elternteil",
+      "description": "Leitfäden, Einstellungs-Checklisten und Kommunikationstipps für die digitale Sicherheit Ihres Kindes.",
+      "button": "Zum Elternratgeber"
+    },
+    "childCard": {
+      "title": "Ich bin ein Kind / Jugendlicher",
+      "description": "Lerne, in sozialen Medien sicher zu bleiben! Übe mit lustigen Quizzen, Tipps und Szenarien.",
+      "button": "Zum Kinderbereich"
+    },
+    "stats": {
+      "title": "Digitale Sicherheit in der Türkei",
+      "children_online": "78% der Kinder nutzen soziale Medien",
+      "cyberbullying": "1 von 3 Kindern erlebt Cybermobbing",
+      "privacy": "65% der Jugendlichen kennen die Datenschutzeinstellungen nicht",
+      "screen_time": "Durchschnittliche tägliche Bildschirmzeit: 4,5 Stunden"
+    },
+    "features": {
+      "title": "Was finden Sie in diesem Leitfaden?",
+      "platforms": {
+        "title": "Plattform-Leitfäden",
+        "description": "Schritt-für-Schritt-Datenschutzeinstellungen für Instagram, TikTok, YouTube und Snapchat."
+      },
+      "quizzes": {
+        "title": "Interaktive Quizze",
+        "description": "Übe mit Szenarien, teste dein Wissen und erfahre deinen Sicherheitsscore."
+      },
+      "emergency": {
+        "title": "Notfall-Leitfaden",
+        "description": "Erfahre, was bei Cybermobbing, Betrug oder Bedrohungen zu tun ist."
+      }
+    }
+  },
+  "parent": {
+    "title": "Elternratgeber",
+    "subtitle": "Alles, was Sie über die digitale Sicherheit Ihres Kindes wissen müssen",
+    "badge": "Für Eltern",
+    "sections": {
+      "privacy": {
+        "title": "Datenschutzeinstellungen",
+        "description": "Erfahren Sie Schritt für Schritt, wie Sie die Datenschutzeinstellungen der Konten Ihres Kindes konfigurieren.",
+        "tips": ["Konto auf 'Privat' stellen", "Standortfreigabe deaktivieren", "Nachrichten von Unbekannten filtern", "Zwei-Faktor-Authentifizierung aktivieren"]
+      },
+      "cyberbullying": {
+        "title": "Cybermobbing",
+        "description": "Erkennen Sie die Anzeichen von Cybermobbing und ergreifen Sie die notwendigen Maßnahmen.",
+        "tips": ["Auf plötzliche Verhaltensänderungen achten", "Beobachten Sie Unbehagen bei der Gerätenutzung", "Schulleistungsabfall verfolgen", "Offene Kommunikation und Vertrauen aufbauen"]
+      },
+      "screen_time": {
+        "title": "Bildschirmzeit-Management",
+        "description": "Entdecken Sie, wie Sie die Bildschirmzeit für gesunde digitale Gewohnheiten verwalten.",
+        "tips": ["Altersgerechte tägliche Bildschirmzeit festlegen", "Bildschirmnutzung bei Mahlzeiten und Schlafenszeit einschränken", "Bildschirmfreie Familienaktivitäten planen", "Integrierte Elternkontroll-Tools nutzen"]
+      },
+      "communication": {
+        "title": "Kommunikation mit dem Kind",
+        "description": "Wege zur effektiven Kommunikation über digitale Sicherheit.",
+        "tips": ["Ohne zu urteilen zuhören", "Eigene Erfahrungen teilen", "Regelmäßige 'digitale Gesprächs'-Zeiten einrichten", "Dem Kind vermitteln, dass es zu Ihnen kommen kann"]
+      },
+      "platforms": {
+        "title": "Plattform-Leitfäden",
+        "description": "Spezielle Sicherheitsleitfäden für Instagram, TikTok, YouTube, Snapchat und mehr.",
+        "tips": ["Altersgrenze jeder Plattform prüfen", "Plattformspezifische Datenschutzeinstellungen konfigurieren", "Benachrichtigungseinstellungen optimieren", "Melde- und Blockierfunktionen beibringen"]
+      },
+      "checklist": {
+        "title": "Sicherheits-Checkliste",
+        "description": "Eine vollständige Checkliste zur Gewährleistung der digitalen Sicherheit Ihres Kindes.",
+        "tips": ["Starke und einzigartige Passwörter erstellen", "Kindersicherungssoftware installieren", "Wöchentliche Kontoüberprüfung durchführen", "Familien-Mediennutzungsvertrag erstellen"]
+      }
+    },
+    "cta": {
+      "title": "Testen Sie Ihr Wissen",
+      "description": "Lösen Sie unsere Quizze, um Ihr Wissen über digitale Sicherheit zu messen.",
+      "button": "Quiz starten"
+    }
+  },
+  "child": {
+    "title": "Kinder- & Jugendbereich",
+    "subtitle": "Bleib sicher in sozialen Medien!",
+    "badge": "Für Kinder & Jugendliche",
+    "age_select": "Wähle deine Altersgruppe",
+    "age_7_12": "7-12 Jahre",
+    "age_13_17": "13-17 Jahre",
+    "golden_rules": {
+      "title": "Goldene Regeln",
+      "subtitle": "Merke dir diese Regeln, um im Internet sicher zu bleiben!",
+      "rules": [
+        { "emoji": "🔒", "title": "Teile keine persönlichen Daten", "description": "Teile niemals deinen Namen, deine Adresse, deine Schule oder Telefonnummer im Internet." },
+        { "emoji": "👤", "title": "Vertraue keinen Fremden", "description": "Wenn dir Unbekannte im Internet schreiben, antworte nicht und informiere einen Erwachsenen." },
+        { "emoji": "📸", "title": "Achte auf deine Fotos", "description": "Teile deine Fotos und Videos nicht mit jedem. Was einmal im Internet ist, bleibt für immer." },
+        { "emoji": "🤝", "title": "Sei freundlich", "description": "Sei im Internet genauso höflich wie im echten Leben. Schreibe nichts Verletzendes." },
+        { "emoji": "🆘", "title": "Bitte um Hilfe", "description": "Wenn dich etwas stört, erschreckt oder traurig macht, sage es sofort einem Erwachsenen." },
+        { "emoji": "⏰", "title": "Achte auf die Bildschirmzeit", "description": "Mache auch Aktivitäten abseits des Bildschirms. Sport, Bücher, Freunde!" }
+      ]
+    },
+    "scenarios": {
+      "title": "Szenarien - Was würdest du tun?",
+      "subtitle": "Kannst du in diesen Situationen die richtige Entscheidung treffen?",
+      "items": [
+        { "title": "Ein Fremder hat dir geschrieben", "question": "Eine unbekannte Person schreibt dir 'Hallo, wollen wir Freunde sein?' Was tust du?", "correct": "Du antwortest nicht und informierst einen Erwachsenen.", "wrong": "Du akzeptierst und beginnst zu chatten.", "explanation": "Du solltest Fremden nicht vertrauen. Böswillige können freundlich erscheinen." },
+        { "title": "Jemand bittet um dein Foto", "question": "Jemand online sagt 'Schick mir ein Foto'. Was tust du?", "correct": "Du sagst Nein und erzählst einem Erwachsenen davon.", "wrong": "Du schickst dein Foto.", "explanation": "Sende niemals Fotos an Unbekannte. Einmal gesendet, kannst du es nicht zurücknehmen." },
+        { "title": "Jemand schreibt böse Kommentare", "question": "Unter deinem Beitrag schreibt jemand ständig gemeine Kommentare. Was tust du?", "correct": "Du blockierst die Person, antwortest nicht und sagst einem Erwachsenen Bescheid.", "wrong": "Du schreibst auch gemeine Dinge zurück.", "explanation": "Bei Cybermobbing ist das Blockieren und um Hilfe bitten die beste Lösung." }
+      ]
+    },
+    "quiz_cta": {
+      "title": "Teste dein Wissen!",
+      "description": "Wie viel weißt du über Social-Media-Sicherheit? Löse unser Quiz und erfahre deinen Score!",
+      "button": "Quiz starten"
+    }
+  },
+  "quiz": {
+    "title": "Quiz & Tests",
+    "subtitle": "Testen Sie Ihr Wissen!",
+    "start": "Start",
+    "next": "Weiter",
+    "finish": "Beenden",
+    "score": "Ihr Ergebnis",
+    "correct": "Richtig",
+    "wrong": "Falsch",
+    "question_of": "Frage {current} / {total}",
+    "points": "Punkte",
+    "completed": "Quiz abgeschlossen!",
+    "try_again": "Erneut versuchen",
+    "back_to_guide": "Zurück zum Leitfaden",
+    "results": {
+      "excellent": "Hervorragend! Sie sind sehr gut über digitale Sicherheit informiert.",
+      "good": "Guter Anfang! Mit etwas mehr Übung können Sie Ihr Wissen erweitern.",
+      "needs_work": "Keine Sorge! Lesen Sie unseren Leitfaden, um Ihr Wissen zu verbessern."
+    }
+  },
+  "emergency": {
+    "title": "Notfall",
+    "subtitle": "Brauchen Sie Hilfe?",
+    "badge": "Notfall-Leitfaden",
+    "steps_title": "5 Schritte im Notfall",
+    "steps": [
+      { "title": "Ruhe bewahren", "description": "Keine Panik. Bewerten Sie die Situation und sprechen Sie ruhig mit Ihrem Kind.", "icon": "🧘" },
+      { "title": "Beweise sammeln", "description": "Machen Sie Screenshots. Speichern Sie Nachrichten, Profile und Daten. Nicht löschen!", "icon": "📸" },
+      { "title": "Blockieren und Melden", "description": "Blockieren Sie die Person auf der Plattform und nutzen Sie die Meldefunktion.", "icon": "🚫" },
+      { "title": "Hilfe holen", "description": "Rufen Sie je nach Schwere die entsprechende Hotline an oder gehen Sie zur Polizei.", "icon": "📱" },
+      { "title": "Unterstützung bieten", "description": "Sagen Sie Ihrem Kind, dass es nicht schuld ist. Holen Sie bei Bedarf professionelle Hilfe.", "icon": "💚" }
+    ],
+    "helplines": {
+      "title": "Hilfshotlines",
+      "subtitle": "Rund um die Uhr erreichbare Hilfshotlines und Meldestellen",
+      "alo182": "ALO 182 - Soziale Unterstützungshotline",
+      "alo155": "ALO 155 - Polizeinotruf",
+      "btk": "BTK-Meldehotline: 112",
+      "cyber": "Cyber-Kriminalität melden: www.ihbarweb.org.tr"
+    },
+    "danger_signs": {
+      "title": "Warnsignale",
+      "subtitle": "Achten Sie auf diese Anzeichen bei Ihrem Kind"
+    },
+    "cta": {
+      "title": "Sofort Hilfe holen",
+      "description": "Wenn Sie oder Ihr Kind in Gefahr sind, rufen Sie bitte sofort die folgende Nummer an.",
+      "button": "ALO 182 anrufen"
+    }
+  },
+  "platforms": {
+    "title": "Plattform-Leitfäden",
+    "subtitle": "Plattformspezifischer Sicherheitsleitfaden",
+    "badge": "Plattform-Leitfäden",
+    "description": "Jede Plattform hat eigene Risiken und Sicherheitseinstellungen. Wählen Sie die Plattform Ihres Kindes für den Schritt-für-Schritt-Leitfaden.",
+    "select_prompt": "Wählen Sie oben eine Plattform, um den detaillierten Leitfaden zu sehen.",
+    "risks_title": "Risiken und Gefahren",
+    "privacy_title": "Datenschutzeinstellungen - Schritt für Schritt",
+    "parent_tips_title": "Eltern-Tipps",
+    "min_age": "Mindestalter"
+  },
+  "risk": {
+    "title": "Digitaler Sicherheits-Risiko-Score",
+    "subtitle": "Beantworten Sie 10 einfache Fragen, um das digitale Sicherheitsrisiko Ihres Kindes zu erfahren.",
+    "badge": "Risikoanalyse",
+    "info": { "time": "~2 Minuten", "questions": "10 Fragen", "personalized": "Personalisierte Empfehlungen" }
+  },
+  "contract": {
+    "title": "Familien-Digitalvertrag",
+    "subtitle": "Erstellen Sie gemeinsam mit Ihrem Kind einen Vertrag zur digitalen Nutzung.",
+    "badge": "Familienvertrag",
+    "parties_title": "Vertragsparteien",
+    "child_name": "Name des Kindes",
+    "parent_name": "Name des Elternteils",
+    "add_rule": "Eigene Regel hinzufügen",
+    "add_button": "Hinzufügen",
+    "summary": "Vertragszusammenfassung",
+    "rules_selected": "Regeln ausgewählt",
+    "preview_print": "Vorschau & Drucken",
+    "select_all": "Alle auswählen",
+    "clear": "Zurücksetzen",
+    "categories": {
+      "screen_time": "Bildschirmzeit",
+      "privacy_security": "Datenschutz & Sicherheit",
+      "communication": "Kommunikation & Verhalten",
+      "content": "Inhalte teilen",
+      "help": "Hilfe suchen",
+      "parent_commitments": "Eltern-Zusagen",
+      "custom": "Eigene Regeln"
+    }
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "description": "Diese Plattform wurde erstellt, um das Bewusstsein für Social-Media-Sicherheit bei Eltern und Kindern zu schärfen.",
+    "quick_links": "Schnelllinks",
+    "helplines": "Hilfshotlines"
   },
   "common": {
     "back": "Zurück",
     "next": "Weiter",
     "learn_more": "Mehr erfahren",
-    "loading": "Laden..."
+    "loading": "Laden...",
+    "correct": "Richtig",
+    "wrong": "Falsch"
   }
 }
