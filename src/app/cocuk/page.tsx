@@ -2,113 +2,226 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Çocuk & Genç Bölümü",
-  description: "Çocuklar ve gençler için sosyal medyada güvende kalma rehberi. Altın kurallar, senaryolar ve eğlenceli quizler.",
-  openGraph: {
-    title: "Çocuk & Genç Bölümü | Dijital Güvenlik",
-    description: "Sosyal medyada güvende kalmayı öğren! Eğlenceli quizler, ipuçları ve senaryolar.",
-  },
+  title: "Çocuk Evreni — Arcade",
+  description: "Sosyal medyada güvenlik — oyun gibi eğlenceli.",
 };
 
-const goldenRules = [
-  { emoji: "🔒", title: "Kişisel Bilgilerini Paylaşma", description: "Adın, adresin, okulun, telefon numaran gibi bilgileri internette hiç kimseyle paylaşma.", color: "bg-red-50 border-red-100" },
-  { emoji: "👤", title: "Tanımadığın Kişilere Güvenme", description: "İnternette tanımadığın kişiler sana mesaj atarsa, onlarla konuşma ve bir yetişkine haber ver.", color: "bg-amber-50 border-amber-100" },
-  { emoji: "📸", title: "Fotoğraflarına Dikkat Et", description: "Fotoğraflarını ve videolarını herkesle paylaşma. Bir kez internete yüklenen şey sonsuza kadar kalabilir.", color: "bg-purple-50 border-purple-100" },
-  { emoji: "🤝", title: "Nazik Ol", description: "İnternette de gerçek hayatta olduğu gibi kibar ol. Kimseyi üzecek şeyler yazma.", color: "bg-blue-50 border-blue-100" },
-  { emoji: "🆘", title: "Yardım İste", description: "Seni rahatsız eden, korkutan veya üzen bir şey olursa hemen bir yetişkine söyle.", color: "bg-emerald-50 border-emerald-100" },
-  { emoji: "⏰", title: "Ekran Süresine Dikkat Et", description: "Telefonun veya tabletin dışında da eğlenceli aktiviteler yap. Spor, kitap, arkadaşlar!", color: "bg-cyan-50 border-cyan-100" },
+const rules = [
+  { n: "01", icon: "🔒", title: "Kişisel bilgini paylaşma", desc: "Ad, adres, okul, telefon — asla.", color: "neon-pink" },
+  { n: "02", icon: "👽", title: "Tanımadığına güvenme", desc: "Tatlı sözlere kanma, yetişkine söyle.", color: "neon-cyan" },
+  { n: "03", icon: "📸", title: "Fotoğrafına dikkat", desc: "Bir kez paylaşılan, hep kalır.", color: "neon-lime" },
+  { n: "04", icon: "💜", title: "Nazik ol", desc: "Ekran arkasında da insan var.", color: "neon-purple" },
+  { n: "05", icon: "🆘", title: "Yardım iste", desc: "Korktun mu? Hemen söyle, gizleme.", color: "neon-amber" },
+  { n: "06", icon: "⏰", title: "Ekrandan uzaklaş", desc: "Hayat dışarıda, telefon içeride.", color: "neon-pink" },
 ];
 
 const scenarios = [
-  { title: "Tanımadığın biri sana mesaj attı", question: "Sosyal medyada tanımadığın bir kişi sana 'Merhaba, arkadaş olalım mı?' diye mesaj atıyor. Ne yaparsın?", correct: "Mesaja cevap vermez ve bir yetişkine haber verirsin.", wrong: "Kabul edersin ve sohbet etmeye başlarsın.", explanation: "Tanımadığın kişilere güvenmemelisin. Kötü niyetli kişiler arkadaş gibi görünebilir." },
-  { title: "Biri senden fotoğrafını istedi", question: "İnternette konuştuğun biri 'Fotoğrafını at' diyor. Ne yaparsın?", correct: "Hayır dersin ve durumu bir yetişkine anlatırsın.", wrong: "Fotoğrafını gönderirsin.", explanation: "Fotoğraflarını tanımadığın insanlara asla gönderme. Bir kez gönderdiğinde geri alamazsın." },
-  { title: "Sana kötü yorumlar yazılıyor", question: "Paylaştığın bir gönderinin altına birisi sürekli kötü yorumlar yazıyor. Ne yaparsın?", correct: "Kişiyi engellersin, cevap vermezsin ve bir yetişkine söylersin.", wrong: "Sen de ona kötü şeyler yazarsın.", explanation: "Siber zorbalıkla karşılaştığında en doğrusu kişiyi engellemek ve yardım istemektir." },
+  {
+    title: "Yabancı bir mesaj geldi",
+    question: "Tanımadığın biri 'Merhaba, arkadaş olalım mı?' diyor. Ne yaparsın?",
+    good: "Cevap vermem, bir yetişkine söylerim.",
+    bad: "Sohbete başlarım, zararsız gibi.",
+  },
+  {
+    title: "Fotoğraf istediler",
+    question: "Birisi 'Fotoğraf at' diyor. Ne yaparsın?",
+    good: "Hayır derim ve aileme söylerim.",
+    bad: "Gönderirim, ne olacak ki.",
+  },
+  {
+    title: "Kötü yorumlar",
+    question: "Paylaşımıma sürekli kötü yazıyorlar. Ne yaparsın?",
+    good: "Engeller, kanıt alırım, yetişkine söylerim.",
+    bad: "Kavga eder, ben de kötü yazarım.",
+  },
 ];
 
 export default function CocukPage() {
   return (
-    <div className="min-h-screen">
-      <section className="section-padding bg-gradient-to-b from-emerald-50 to-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-6">
-            <span className="text-lg">🌟</span> Çocuklar & Gençler İçin
+    <>
+      {/* ============ HERO — Arcade ============ */}
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
+        <div className="absolute inset-0 grid-bg opacity-50" />
+        <div className="orb w-[600px] h-[600px] bg-neon-pink top-0 -right-20 animate-glow-pulse" />
+        <div className="orb w-[400px] h-[400px] bg-neon-lime bottom-0 -left-20 animate-glow-pulse" style={{ animationDelay: "2s" }} />
+
+        {/* Floating emojis */}
+        <div className="absolute top-32 right-8 text-6xl animate-float hidden md:block">🎮</div>
+        <div className="absolute bottom-32 left-10 text-5xl animate-float hidden md:block" style={{ animationDelay: "1s" }}>⭐</div>
+        <div className="absolute top-1/2 right-20 text-4xl animate-float hidden md:block" style={{ animationDelay: "2s" }}>💎</div>
+
+        <div className="wrap relative z-10 py-20 w-full">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="inline-flex items-center gap-2 px-3 py-1 border border-neon-pink text-neon-pink text-[10px] font-mono uppercase tracking-[0.3em]">
+              <span className="w-1.5 h-1.5 bg-neon-pink rounded-full animate-pulse" />
+              LEVEL 1 • ONLINE
+            </span>
+            <span className="font-mono text-xs text-paper/40">
+              7-17 YAŞ
+            </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
-            Sosyal Medyada <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">Güvende Kal!</span>
+
+          <h1 className="display-text leading-[0.82] text-paper">
+            <span className="block text-[18vw] sm:text-[13vw] md:text-[10vw]">Seni</span>
+            <span className="block text-[18vw] sm:text-[13vw] md:text-[10vw] text-neon-pink">evrende</span>
+            <span className="block text-[18vw] sm:text-[13vw] md:text-[10vw]">koruyor.</span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            İnternette güvenli bir şekilde vakit geçirmenin kurallarını öğren, senaryolarla pratik yap ve bilgini test et!
+
+          <p className="mt-8 max-w-xl text-paper/70 text-lg leading-relaxed">
+            İnternet kocaman bir oyun alanı. Bazı yerleri süper, bazıları tuzaklı. Kuralları öğren, skor yap, <span className="text-neon-lime">güvende kal.</span>
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-10">
-            <button className="px-6 py-3 rounded-xl bg-amber-100 text-amber-800 font-semibold hover:bg-amber-200 transition-colors">🎈 7-12 Yaş</button>
-            <button className="px-6 py-3 rounded-xl bg-indigo-100 text-indigo-800 font-semibold hover:bg-indigo-200 transition-colors">🎓 13-17 Yaş</button>
-          </div>
-        </div>
-      </section>
 
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">⭐ Altın Kurallar</h2>
-            <p className="text-lg text-gray-600">İnternette güvende kalmak için bu kuralları her zaman hatırla!</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {goldenRules.map((rule, i) => (
-              <div key={i} className={`rounded-2xl border-2 ${rule.color} p-6 hover:shadow-lg transition-all hover:-translate-y-1`}>
-                <div className="text-4xl mb-4">{rule.emoji}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{rule.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{rule.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">🎭 Senaryolar - Ne Yapardın?</h2>
-            <p className="text-lg text-gray-600">Bu durumlarda doğru kararı verebilir misin?</p>
-          </div>
-          <div className="space-y-6">
-            {scenarios.map((scenario, i) => (
-              <div key={i} className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-white font-bold text-sm">{i + 1}</span>
-                  <h3 className="text-lg font-bold text-gray-900">{scenario.title}</h3>
-                </div>
-                <p className="text-gray-700 mb-5 font-medium">{scenario.question}</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-                  <div className="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-200">
-                    <svg className="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    <div><span className="text-xs font-semibold text-emerald-700 uppercase">Doğru</span><p className="text-sm text-emerald-900 mt-1">{scenario.correct}</p></div>
-                  </div>
-                  <div className="flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-200">
-                    <svg className="w-5 h-5 text-red-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                    <div><span className="text-xs font-semibold text-red-700 uppercase">Yanlış</span><p className="text-sm text-red-900 mt-1">{scenario.wrong}</p></div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2 p-3 rounded-lg bg-blue-50 border border-blue-100">
-                  <svg className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                  <p className="text-sm text-blue-800">{scenario.explanation}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl p-8 sm:p-12 text-white">
-            <h2 className="text-3xl font-bold mb-4">🏆 Bilgini Test Et!</h2>
-            <p className="text-lg text-emerald-100 mb-8 max-w-2xl mx-auto">Sosyal medya güvenliği hakkında ne kadar bilgi sahibisin? Quizimizi çöz ve puanını öğren!</p>
-            <Link href="/quiz" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-emerald-700 font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
-              Quiz&apos;e Başla
+          <div className="mt-12 flex flex-wrap gap-3">
+            <Link
+              href="/quiz"
+              className="group relative overflow-hidden inline-block"
+            >
+              <span className="relative z-10 block px-8 py-4 bg-neon-lime text-void font-bold text-sm uppercase tracking-widest">
+                🎮 Quiz&apos;e Başla
+              </span>
+              <span className="absolute inset-0 bg-neon-pink translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              <span className="absolute inset-0 flex items-center justify-center px-8 py-4 text-void font-bold text-sm uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                ⚡ Hadi!
+              </span>
             </Link>
+            <a href="#kurallar" className="inline-block px-8 py-4 border border-paper/30 text-paper font-bold text-sm uppercase tracking-widest hover:border-neon-pink hover:text-neon-pink transition-colors">
+              Kuralları Gör ↓
+            </a>
+          </div>
+
+          {/* Game stats */}
+          <div className="mt-20 grid grid-cols-3 gap-px bg-steel border border-steel max-w-xl">
+            {[
+              { k: "Kural", v: "6", c: "neon-pink" },
+              { k: "Senaryo", v: "3", c: "neon-cyan" },
+              { k: "Soru", v: "16", c: "neon-lime" },
+            ].map((s, i) => (
+              <div key={i} className="bg-void p-4 text-center">
+                <p className={`display-text text-4xl text-${s.c} leading-none mb-1`}>{s.v}</p>
+                <p className="text-[10px] font-mono uppercase tracking-widest text-paper/40">{s.k}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+
+      {/* ============ KURALLAR — Arcade kartlar ============ */}
+      <section id="kurallar" className="relative py-24 border-t border-steel overflow-hidden">
+        <div className="wrap">
+          <div className="mb-16 text-center">
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-neon-pink mb-3">
+              / 6 ALTIN KURAL / EZBERLE
+            </p>
+            <h2 className="display-text text-5xl sm:text-7xl text-paper leading-none">
+              Hayat kurtaran<br />
+              <span className="text-gradient">kurallar.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {rules.map((r, i) => (
+              <div
+                key={r.n}
+                className={`group relative p-8 bg-carbon border border-steel hover:border-${r.color} transition-all hover:-translate-y-1 overflow-hidden`}
+              >
+                {/* Number watermark */}
+                <span className={`absolute -top-4 -right-2 display-text text-9xl text-${r.color}/10 leading-none pointer-events-none`}>
+                  {r.n}
+                </span>
+
+                <div className="relative">
+                  <div className="text-5xl mb-4 group-hover:scale-125 group-hover:rotate-12 transition-transform origin-left">
+                    {r.icon}
+                  </div>
+                  <p className={`text-[10px] font-mono uppercase tracking-[0.3em] text-${r.color} mb-2`}>
+                    KURAL / {r.n}
+                  </p>
+                  <h3 className="font-bold text-xl text-paper mb-2 leading-tight">{r.title}</h3>
+                  <p className="text-sm text-paper/60 leading-relaxed">{r.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ SENARYOLAR — İnteraktif ============ */}
+      <section className="relative py-24 bg-carbon border-y border-steel overflow-hidden">
+        <div className="orb w-[400px] h-[400px] bg-neon-cyan top-20 right-0" />
+
+        <div className="wrap relative">
+          <div className="mb-16">
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-neon-lime mb-3">
+              / SENARYO / NE YAPARDIN?
+            </p>
+            <h2 className="display-text text-5xl sm:text-6xl text-paper leading-none">
+              Gerçek anlar.<br />
+              <span className="text-neon-pink">Gerçek seçimler.</span>
+            </h2>
+          </div>
+
+          <div className="space-y-6">
+            {scenarios.map((s, i) => (
+              <div key={i} className="bg-void border border-steel p-8 hover:border-neon-lime transition-colors">
+                <div className="grid grid-cols-12 gap-6 items-start">
+                  <div className="col-span-12 md:col-span-3">
+                    <p className="text-[10px] font-mono text-neon-cyan uppercase tracking-widest mb-2">
+                      SENARYO / 0{i + 1}
+                    </p>
+                    <h3 className="font-bold text-xl text-paper leading-tight">{s.title}</h3>
+                  </div>
+
+                  <div className="col-span-12 md:col-span-9">
+                    <p className="text-lg text-paper/90 mb-6 leading-relaxed">&ldquo;{s.question}&rdquo;</p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div className="group relative p-5 border border-neon-lime/40 bg-neon-lime/5 hover:bg-neon-lime/10 transition-colors">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="w-6 h-6 bg-neon-lime text-void flex items-center justify-center font-bold text-xs">✓</span>
+                          <span className="text-xs font-mono uppercase tracking-widest text-neon-lime">DOĞRU</span>
+                        </div>
+                        <p className="text-sm text-paper">{s.good}</p>
+                      </div>
+                      <div className="group relative p-5 border border-neon-pink/40 bg-neon-pink/5">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="w-6 h-6 bg-neon-pink text-void flex items-center justify-center font-bold text-xs">✕</span>
+                          <span className="text-xs font-mono uppercase tracking-widest text-neon-pink">YANLIŞ</span>
+                        </div>
+                        <p className="text-sm text-paper">{s.bad}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FINAL CTA ============ */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-40" />
+        <div className="orb w-[500px] h-[500px] bg-neon-lime top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-glow-pulse" />
+
+        <div className="wrap relative text-center">
+          <p className="text-6xl mb-6">🏆</p>
+          <h2 className="display-text text-5xl sm:text-7xl text-paper leading-none mb-6">
+            Hazır mısın?
+          </h2>
+          <p className="text-paper/70 text-lg max-w-md mx-auto mb-10">
+            16 soruluk quiz seni bekliyor. Ne kadar biliyorsun, görelim!
+          </p>
+          <Link
+            href="/quiz"
+            className="group relative inline-block overflow-hidden"
+          >
+            <span className="relative z-10 block px-10 py-5 bg-neon-pink text-void font-bold text-base uppercase tracking-widest">
+              Quiz&apos;e Başla →
+            </span>
+            <span className="absolute inset-0 bg-neon-lime translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }

@@ -1,77 +1,143 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/ebeveyn", label: "Ebeveyn" },
-  { href: "/cocuk", label: "Çocuklar" },
-  { href: "/platformlar", label: "Platformlar" },
-  { href: "/quiz", label: "Quiz" },
-  { href: "/fiyatlandirma", label: "Fiyat" },
+  { href: "/ebeveyn", label: "Ebeveyn", num: "01" },
+  { href: "/cocuk", label: "Çocuklar", num: "02" },
+  { href: "/platformlar", label: "Platformlar", num: "03" },
+  { href: "/quiz", label: "Quiz", num: "04" },
+  { href: "/risk-hesapla", label: "Risk", num: "05" },
+  { href: "/fiyatlandirma", label: "Planlar", num: "06" },
 ];
-
-const marqueeItems = ["DİJİTAL GÜVENLİK", "★", "ÇOCUKLARINIZ İÇİN", "●", "2025 SÜRÜMÜ", "★", "TÜRKÇE REHBER", "●", "ÜCRETSİZ BAŞLA", "★"];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <>
-      <div className="bg-ink text-cream border-b-2 border-ink py-2 overflow-hidden">
-        <div className="flex whitespace-nowrap animate-marquee">
-          {[...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
-            <span key={i} className="mx-6 text-xs font-mono uppercase tracking-widest">{item}</span>
-          ))}
-        </div>
-      </div>
-
-      <header className="sticky top-0 z-50 bg-cream border-b-2 border-ink">
+      <header
+        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
+          scrolled ? "bg-void/80 backdrop-blur-xl border-b border-steel" : "bg-transparent"
+        }`}
+      >
         <div className="wrap flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 bg-lime border-2 border-ink flex items-center justify-center group-hover:-rotate-6 transition-transform">
-              <svg className="w-5 h-5 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
+            <div className="relative w-9 h-9 flex items-center justify-center">
+              <div className="absolute inset-0 bg-neon-cyan/20 blur-lg group-hover:bg-neon-pink/30 transition-colors" />
+              <div className="relative w-full h-full border border-neon-cyan/60 bg-void flex items-center justify-center group-hover:border-neon-pink transition-colors">
+                <div className="w-2 h-2 bg-neon-cyan group-hover:bg-neon-pink transition-colors" />
+              </div>
             </div>
-            <span className="font-display text-xl font-bold text-ink hidden sm:block italic">
-              Güvenli Medya<span className="text-hot">.</span>
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper hidden sm:block">
+              GÜVENLİ<span className="text-neon-cyan">.</span>MEDYA
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
-            {links.map((l) => (
-              <Link key={l.href} href={l.href} className="text-sm font-bold uppercase tracking-wider text-ink hover:text-hot transition-colors relative group">
-                {l.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-hot group-hover:w-full transition-all duration-200" />
-              </Link>
-            ))}
+          <nav className="hidden lg:flex items-center gap-1">
+            {links.map((l) => {
+              const active = pathname === l.href;
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className={`group relative px-3 py-2 text-xs font-mono uppercase tracking-widest transition-colors ${
+                    active ? "text-neon-cyan" : "text-paper/70 hover:text-paper"
+                  }`}
+                >
+                  <span className="text-[9px] text-paper/40 group-hover:text-neon-pink mr-1.5 transition-colors">
+                    {l.num}
+                  </span>
+                  {l.label}
+                  {active && (
+                    <span className="absolute bottom-0 left-3 right-3 h-px bg-neon-cyan" />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link href="/giris" className="hidden sm:block text-xs font-bold uppercase text-ink hover:underline decoration-2">Giriş</Link>
-            <Link href="/kayit" className="brut-btn bg-lime text-ink text-xs uppercase" style={{ boxShadow: "3px 3px 0 0 #0a0a0a" }}>
-              Kayıt Ol →
+            <Link
+              href="/giris"
+              className="hidden sm:block text-xs font-mono uppercase tracking-widest text-paper/70 hover:text-paper px-3 py-2 transition-colors"
+            >
+              Giriş
             </Link>
-            <button onClick={() => setOpen(!open)} className="md:hidden p-2 border-2 border-ink bg-white" aria-label="Menü">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                {open ? <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />}
-              </svg>
+            <Link
+              href="/kayit"
+              className="relative group overflow-hidden"
+            >
+              <span className="relative z-10 block px-5 py-2 bg-neon-lime text-void text-xs font-bold uppercase tracking-widest transition-transform group-hover:-translate-y-full">
+                Kaydol →
+              </span>
+              <span className="absolute inset-0 flex items-center justify-center px-5 py-2 bg-neon-pink text-void text-xs font-bold uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition-transform">
+                Başla
+              </span>
+            </Link>
+            <button
+              onClick={() => setOpen(!open)}
+              className="lg:hidden p-2 text-paper border border-steel hover:border-neon-cyan transition-colors"
+              aria-label="Menü"
+            >
+              <div className="w-5 h-4 flex flex-col justify-between">
+                <span className={`block h-0.5 bg-paper transition-all ${open ? "rotate-45 translate-y-1.5" : ""}`} />
+                <span className={`block h-0.5 bg-paper transition-all ${open ? "opacity-0" : ""}`} />
+                <span className={`block h-0.5 bg-paper transition-all ${open ? "-rotate-45 -translate-y-1.5" : ""}`} />
+              </div>
             </button>
           </div>
         </div>
+      </header>
 
-        {open && (
-          <div className="md:hidden border-t-2 border-ink bg-cream px-5 py-4">
-            {links.map((l) => (
-              <Link key={l.href} href={l.href} className="block py-2.5 text-sm font-bold uppercase tracking-wider text-ink hover:text-hot" onClick={() => setOpen(false)}>
-                → {l.label}
+      {/* Full-screen mobile menu */}
+      <div
+        className={`fixed inset-0 z-30 bg-void transition-all duration-500 ${
+          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="absolute inset-0 grid-bg opacity-40" />
+        <div className="relative h-full flex flex-col justify-center px-8 pt-20 pb-10">
+          <nav className="space-y-1">
+            {links.map((l, i) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="group flex items-baseline gap-4 py-3 border-b border-steel hover:border-neon-cyan transition-colors"
+                style={{
+                  animation: open ? `fade-up 0.4s ${i * 60}ms both` : "none",
+                }}
+              >
+                <span className="text-xs font-mono text-paper/40 group-hover:text-neon-pink transition-colors">
+                  {l.num}
+                </span>
+                <span className="display-text text-4xl sm:text-5xl text-paper group-hover:text-neon-cyan transition-colors">
+                  {l.label}
+                </span>
+                <span className="ml-auto text-paper/30 group-hover:text-paper transition-colors">→</span>
               </Link>
             ))}
-            <Link href="/giris" className="block py-2.5 text-sm font-bold uppercase tracking-wider text-ink" onClick={() => setOpen(false)}>→ Giriş</Link>
+          </nav>
+          <div className="mt-10 flex gap-3">
+            <Link href="/giris" className="flex-1 text-center py-3 border border-steel text-paper text-xs font-mono uppercase tracking-widest">Giriş</Link>
+            <Link href="/kayit" className="flex-1 text-center py-3 bg-neon-lime text-void text-xs font-bold uppercase tracking-widest">Kaydol →</Link>
           </div>
-        )}
-      </header>
+        </div>
+      </div>
     </>
   );
 }

@@ -7,51 +7,141 @@
     @apply scroll-smooth;
   }
   body {
-    @apply font-sans antialiased text-ink bg-cream;
-    background-image: radial-gradient(circle at 1px 1px, rgba(10,10,10,0.08) 1px, transparent 0);
-    background-size: 20px 20px;
+    @apply font-sans antialiased text-paper bg-void;
+    cursor: auto;
   }
   ::selection {
-    background: #d4ff00;
-    color: #0a0a0a;
+    background: #caff33;
+    color: #05050a;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #05050a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a36;
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff2daf;
   }
 }
 
 @layer components {
   .wrap {
-    @apply max-w-6xl mx-auto px-5 sm:px-8;
+    @apply max-w-7xl mx-auto px-5 sm:px-8;
   }
 
-  .brut-card {
-    @apply bg-white border-2 border-ink transition-all duration-150;
-    box-shadow: 6px 6px 0 0 #0a0a0a;
-  }
-  .brut-card:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 9px 9px 0 0 #0a0a0a;
-  }
-
-  .brut-btn {
-    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-ink font-bold text-sm transition-all duration-150;
-  }
-  .brut-btn:active {
-    transform: translate(3px, 3px);
-    box-shadow: 0 0 0 0 #0a0a0a !important;
+  /* Grain/noise texture overlay */
+  .noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    pointer-events: none;
+    mix-blend-mode: overlay;
   }
 
+  /* Grid background */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .grid-bg-sm {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Neon border */
+  .neon-border {
+    @apply border border-neon-cyan/30;
+    box-shadow: 0 0 0 1px rgba(0, 240, 255, 0.1), inset 0 0 20px rgba(0, 240, 255, 0.05);
+  }
+
+  /* Terminal cursor */
+  .cursor-blink::after {
+    content: "▊";
+    @apply ml-1 animate-blink text-neon-cyan;
+  }
+
+  /* Big display text with optical tracking */
+  .display-text {
+    font-family: '"Times New Roman"', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+  }
+
+  /* Old helpers still referenced in other pages */
   .section-padding {
     @apply px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20;
   }
   .gradient-primary {
-    @apply bg-ink text-white;
+    @apply bg-gradient-to-br from-neon-cyan to-neon-purple text-void;
   }
   .gradient-safety {
-    @apply bg-lime text-ink;
+    @apply bg-gradient-to-br from-neon-lime to-neon-cyan text-void;
   }
   .gradient-warning {
-    @apply bg-hot text-white;
+    @apply bg-gradient-to-br from-neon-pink to-neon-amber text-void;
   }
   .card-hover {
-    @apply transition-all duration-150;
+    @apply transition-all duration-300;
+  }
+  .brut-card {
+    @apply bg-carbon border border-steel;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .brut-btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-bold text-sm transition-all duration-150;
+  }
+
+  /* Magnetic hover */
+  .magnetic {
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .magnetic:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(90deg, #00f0ff 0%, #ff2daf 50%, #caff33 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Glowing orb */
+  .orb {
+    filter: blur(80px);
+    opacity: 0.4;
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* Vertical text */
+  .vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+}
+
+/* Motion reduce */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -103,7 +103,7 @@ export default function GirisPage() {
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                   Şifre
                 </label>
-                <Link href="#" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
+                <Link href="/sifremi-unuttum" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
                   Şifremi Unuttum
                 </Link>
               </div>
