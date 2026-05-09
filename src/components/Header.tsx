@@ -5,12 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/ebeveyn", label: "Ebeveyn", num: "01" },
-  { href: "/cocuk", label: "Çocuklar", num: "02" },
-  { href: "/platformlar", label: "Platformlar", num: "03" },
-  { href: "/quiz", label: "Quiz", num: "04" },
-  { href: "/risk-hesapla", label: "Risk", num: "05" },
-  { href: "/fiyatlandirma", label: "Planlar", num: "06" },
+  { href: "/ebeveyn", label: "Ebeveyn" },
+  { href: "/cocuk", label: "Çocuklar" },
+  { href: "/platformlar", label: "Platformlar" },
+  { href: "/quiz", label: "Quiz" },
+  { href: "/fiyatlandirma", label: "Planlar" },
 ];
 
 export default function Header() {
@@ -20,7 +19,7 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -31,41 +30,32 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
-          scrolled ? "bg-void/80 backdrop-blur-xl border-b border-steel" : "bg-transparent"
+        className={`sticky top-0 inset-x-0 z-40 transition-colors duration-200 ${
+          scrolled ? "bg-paper/85 backdrop-blur-md border-b border-line" : "bg-transparent"
         }`}
       >
         <div className="wrap flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-9 h-9 flex items-center justify-center">
-              <div className="absolute inset-0 bg-neon-cyan/20 blur-lg group-hover:bg-neon-pink/30 transition-colors" />
-              <div className="relative w-full h-full border border-neon-cyan/60 bg-void flex items-center justify-center group-hover:border-neon-pink transition-colors">
-                <div className="w-2 h-2 bg-neon-cyan group-hover:bg-neon-pink transition-colors" />
-              </div>
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-7 h-7 bg-ink flex items-center justify-center">
+              <div className="w-1.5 h-1.5 bg-paper" />
             </div>
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-paper hidden sm:block">
-              GÜVENLİ<span className="text-neon-cyan">.</span>MEDYA
+            <span className="font-medium text-[15px] text-ink hidden sm:block">
+              Güvenli Medya
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1">
             {links.map((l) => {
               const active = pathname === l.href;
               return (
                 <Link
                   key={l.href}
                   href={l.href}
-                  className={`group relative px-3 py-2 text-xs font-mono uppercase tracking-widest transition-colors ${
-                    active ? "text-neon-cyan" : "text-paper/70 hover:text-paper"
+                  className={`px-3 py-2 text-sm transition-colors ${
+                    active ? "text-ink" : "text-muted hover:text-ink"
                   }`}
                 >
-                  <span className="text-[9px] text-paper/40 group-hover:text-neon-pink mr-1.5 transition-colors">
-                    {l.num}
-                  </span>
                   {l.label}
-                  {active && (
-                    <span className="absolute bottom-0 left-3 right-3 h-px bg-neon-cyan" />
-                  )}
                 </Link>
               );
             })}
@@ -74,67 +64,56 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <Link
               href="/giris"
-              className="hidden sm:block text-xs font-mono uppercase tracking-widest text-paper/70 hover:text-paper px-3 py-2 transition-colors"
+              className="hidden sm:block text-sm text-muted hover:text-ink px-3 py-2 transition-colors"
             >
               Giriş
             </Link>
             <Link
               href="/kayit"
-              className="relative group overflow-hidden"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-ink text-paper text-sm rounded-full hover:bg-accent transition-colors"
             >
-              <span className="relative z-10 block px-5 py-2 bg-neon-lime text-void text-xs font-bold uppercase tracking-widest transition-transform group-hover:-translate-y-full">
-                Kaydol →
-              </span>
-              <span className="absolute inset-0 flex items-center justify-center px-5 py-2 bg-neon-pink text-void text-xs font-bold uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition-transform">
-                Başla
-              </span>
+              Kayıt ol
+              <span className="text-xs opacity-70">→</span>
             </Link>
             <button
               onClick={() => setOpen(!open)}
-              className="lg:hidden p-2 text-paper border border-steel hover:border-neon-cyan transition-colors"
+              className="md:hidden p-2 text-ink hover:bg-sand rounded-full transition-colors"
               aria-label="Menü"
             >
               <div className="w-5 h-4 flex flex-col justify-between">
-                <span className={`block h-0.5 bg-paper transition-all ${open ? "rotate-45 translate-y-1.5" : ""}`} />
-                <span className={`block h-0.5 bg-paper transition-all ${open ? "opacity-0" : ""}`} />
-                <span className={`block h-0.5 bg-paper transition-all ${open ? "-rotate-45 -translate-y-1.5" : ""}`} />
+                <span className={`block h-0.5 bg-ink transition-all ${open ? "rotate-45 translate-y-1.5" : ""}`} />
+                <span className={`block h-0.5 bg-ink transition-all ${open ? "opacity-0" : ""}`} />
+                <span className={`block h-0.5 bg-ink transition-all ${open ? "-rotate-45 -translate-y-1.5" : ""}`} />
               </div>
             </button>
           </div>
         </div>
       </header>
 
-      {/* Full-screen mobile menu */}
       <div
-        className={`fixed inset-0 z-30 bg-void transition-all duration-500 ${
+        className={`fixed inset-0 z-30 bg-paper transition-opacity duration-300 md:hidden ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="absolute inset-0 grid-bg opacity-40" />
-        <div className="relative h-full flex flex-col justify-center px-8 pt-20 pb-10">
+        <div className="pt-20 px-6 pb-10 h-full flex flex-col">
           <nav className="space-y-1">
-            {links.map((l, i) => (
+            {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="group flex items-baseline gap-4 py-3 border-b border-steel hover:border-neon-cyan transition-colors"
-                style={{
-                  animation: open ? `fade-up 0.4s ${i * 60}ms both` : "none",
-                }}
+                className="block py-4 border-b border-line text-2xl text-ink hover:text-accent transition-colors"
               >
-                <span className="text-xs font-mono text-paper/40 group-hover:text-neon-pink transition-colors">
-                  {l.num}
-                </span>
-                <span className="display-text text-4xl sm:text-5xl text-paper group-hover:text-neon-cyan transition-colors">
-                  {l.label}
-                </span>
-                <span className="ml-auto text-paper/30 group-hover:text-paper transition-colors">→</span>
+                {l.label}
               </Link>
             ))}
           </nav>
-          <div className="mt-10 flex gap-3">
-            <Link href="/giris" className="flex-1 text-center py-3 border border-steel text-paper text-xs font-mono uppercase tracking-widest">Giriş</Link>
-            <Link href="/kayit" className="flex-1 text-center py-3 bg-neon-lime text-void text-xs font-bold uppercase tracking-widest">Kaydol →</Link>
+          <div className="mt-auto flex gap-3">
+            <Link href="/giris" className="flex-1 text-center py-3 border border-line text-ink text-sm rounded-full">
+              Giriş
+            </Link>
+            <Link href="/kayit" className="flex-1 text-center py-3 bg-ink text-paper text-sm rounded-full">
+              Kayıt ol
+            </Link>
           </div>
         </div>
       </div>

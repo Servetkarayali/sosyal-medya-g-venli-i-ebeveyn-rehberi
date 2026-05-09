@@ -14,70 +14,50 @@ export default function SifremiUnuttumPage() {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="orb w-[500px] h-[500px] bg-neon-cyan top-0 -left-40" />
-      <div className="orb w-[400px] h-[400px] bg-neon-pink bottom-0 -right-20" />
+    <div className="min-h-[80vh] py-16 sm:py-20">
+      <div className="wrap-narrow max-w-md">
+        <p className="eyebrow mb-4">
+          <Link href="/giris" className="hover:text-ink transition-colors">← Giriş</Link>
+        </p>
+        <h1 className="display-text text-4xl sm:text-5xl text-ink mb-4">
+          Şifreni unuttun mu?
+        </h1>
+        <p className="text-muted mb-10">
+          E-posta adresini gir, sıfırlama bağlantısı gönderelim.
+        </p>
 
-      <div className="wrap relative">
-        <div className="max-w-md mx-auto">
-          <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.3em] text-paper/40 mb-8">
-            <Link href="/giris" className="hover:text-paper transition-colors">← Giriş</Link>
-          </div>
-
-          <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-neon-pink mb-3">
-            / ŞİFRE SIFIRLAMA
-          </p>
-          <h1 className="display-text text-5xl sm:text-6xl text-paper leading-none mb-6">
-            Hatırla,<br /><span className="text-gradient">sıfırla.</span>
-          </h1>
-
-          {!sent ? (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <p className="text-paper/60 text-sm leading-relaxed mb-6">
-                E-posta adresini gir, şifre sıfırlama bağlantısı gönderelim.
-              </p>
-
-              <div>
-                <label className="block text-[10px] font-mono uppercase tracking-widest text-paper/50 mb-2">E-POSTA</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="ornek@email.com"
-                  required
-                  className="w-full px-4 py-3 bg-carbon border border-steel text-paper font-mono focus:border-neon-cyan focus:outline-none transition-colors"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="group relative w-full overflow-hidden"
-              >
-                <span className="relative z-10 block px-6 py-4 bg-neon-cyan text-void font-bold text-sm uppercase tracking-widest">
-                  Sıfırlama Bağlantısı Gönder
-                </span>
-                <span className="absolute inset-0 bg-neon-pink translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              </button>
-            </form>
-          ) : (
-            <div className="space-y-6">
-              <div className="p-8 border border-neon-lime bg-neon-lime/5 text-center">
-                <p className="text-5xl mb-4">✓</p>
-                <h2 className="font-bold text-xl text-paper mb-2">E-posta gönderildi</h2>
-                <p className="text-sm text-paper/60 leading-relaxed">
-                  <span className="font-mono text-neon-cyan">{email}</span> adresine sıfırlama bağlantısı gönderdik. 5 dakika içinde gelmezse spam klasörünü kontrol et.
-                </p>
-              </div>
-              <Link
-                href="/giris"
-                className="block text-center px-6 py-3 border border-steel text-paper text-xs font-mono uppercase tracking-widest hover:border-neon-cyan transition-colors"
-              >
-                Giriş sayfasına dön
-              </Link>
+        {!sent ? (
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="block text-sm text-ink mb-2">E-posta</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="ornek@email.com"
+                required
+                className="w-full px-4 py-3 bg-surface border border-line rounded-xl text-ink focus:border-accent focus:outline-none transition-colors"
+              />
             </div>
-          )}
-        </div>
+            <button
+              type="submit"
+              className="w-full py-3 bg-ink text-paper text-sm rounded-full hover:bg-accent transition-colors"
+            >
+              Sıfırlama bağlantısı gönder
+            </button>
+          </form>
+        ) : (
+          <div className="bg-surface border border-line p-8 rounded-2xl text-center">
+            <p className="text-3xl mb-3">✓</p>
+            <h2 className="font-medium text-ink mb-2">E-posta gönderildi</h2>
+            <p className="text-sm text-muted leading-relaxed mb-6">
+              <span className="text-ink">{email}</span> adresine sıfırlama bağlantısı gönderdik.
+            </p>
+            <Link href="/giris" className="inline-flex items-center gap-2 text-sm text-accent">
+              Giriş sayfasına dön →
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
