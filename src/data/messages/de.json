@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "title": "Social-Media-Sicherheit - Elternratgeber",
+    "description": "Interaktiver Leitfaden zur Sicherheit in sozialen Medien für Eltern und Kinder"
+  },
+  "nav": {
+    "home": "Startseite",
+    "parent": "Elternratgeber",
+    "child": "Kinderbereich",
+    "quiz": "Quiz & Tests",
+    "emergency": "Notfall"
+  },
+  "common": {
+    "back": "Zurück",
+    "next": "Weiter",
+    "learn_more": "Mehr erfahren",
+    "loading": "Laden..."
+  }
+}

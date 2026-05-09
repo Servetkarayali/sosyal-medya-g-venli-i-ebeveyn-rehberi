@@ -1,0 +1,133 @@
+"use client";
+
+import { useState } from "react";
+
+const quizQuestions = [
+  { question: "Sosyal medyada güçlü bir şifre nasıl olmalıdır?", options: ["Doğum tarihiniz", "En az 12 karakter, büyük-küçük harf, rakam ve özel karakter içermeli", "Evcil hayvanınızın adı", "123456789"], correctIndex: 1, explanation: "Güçlü şifreler en az 12 karakter uzunluğunda olmalı ve harf, rakam, özel karakter karışımı içermelidir." },
+  { question: "Çocuğunuz sosyal medyada tanımadığı birinden mesaj aldığında ne yapmalı?", options: ["Hemen cevap vermeli", "Kişiyi takip etmeli", "Mesajı silmeli ve bir yetişkine haber vermeli", "Kişisel bilgilerini paylaşmalı"], correctIndex: 2, explanation: "Tanımadığı kişilerden gelen mesajlara cevap vermemeli ve mutlaka bir yetişkine bildirmelidir." },
+  { question: "Instagram'da hesabı 'Gizli' yapmak ne anlama gelir?", options: ["Hiç kimse profilinizi göremez", "Sadece onayladığınız kişiler paylaşımlarınızı görebilir", "Mesaj alamazsınız", "Hiçbir şey değişmez"], correctIndex: 1, explanation: "Gizli hesapta sadece takip isteğinizi onayladığınız kişiler paylaşımlarınızı görebilir." },
+  { question: "Siber zorbalığın bir belirtisi aşağıdakilerden hangisidir?", options: ["Çocuğun sosyal ve neşeli olması", "Çocuğun telefonu kullanırken tedirgin olması ve ekranı gizlemesi", "Çocuğun arkadaşlarıyla vakit geçirmesi", "Çocuğun okul notlarının yükselmesi"], correctIndex: 1, explanation: "Cihazı kullanırken huzursuzluk, ekranı gizleme ve sosyal içe kapanma siber zorbalığın önemli belirtileridir." },
+  { question: "Çocuklar için önerilen günlük ekran süresi ne kadardır? (6-12 yaş)", options: ["Sınırsız", "En fazla 1-2 saat", "En az 6 saat", "Sadece hafta sonları"], correctIndex: 1, explanation: "Uzmanlar 6-12 yaş arası çocuklar için günde en fazla 1-2 saat ekran süresi önermektedir." },
+];
+
+export default function QuizPage() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [showResult, setShowResult] = useState(false);
+  const [score, setScore] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
+
+  const handleAnswer = (index: number) => {
+    if (selectedAnswer !== null) return;
+    setSelectedAnswer(index);
+    setShowResult(true);
+    if (index === quizQuestions[currentQuestion].correctIndex) {
+      setScore(score + 1);
+    }
+  };
+
+  const nextQuestion = () => {
+    if (currentQuestion < quizQuestions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setSelectedAnswer(null);
+      setShowResult(false);
+    } else {
+      setIsFinished(true);
+    }
+  };
+
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setSelectedAnswer(null);
+    setShowResult(false);
+    setScore(0);
+    setIsFinished(false);
+  };
+
+  if (isFinished) {
+    const percentage = Math.round((score / quizQuestions.length) * 100);
+    return (
+      <div className="min-h-screen section-padding bg-gradient-to-b from-indigo-50 to-white">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="bg-white rounded-3xl shadow-xl p-8 sm:p-12">
+            <div className="text-6xl mb-6">{percentage >= 80 ? "🏆" : percentage >= 60 ? "👍" : "📚"}</div>
+            <h1 className="text-3xl font-extrabold text-gray-900 mb-4">Quiz Tamamlandı!</h1>
+            <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-2">{percentage}%</div>
+            <p className="text-lg text-gray-600 mb-2">{quizQuestions.length} sorudan <span className="font-bold text-emerald-600">{score} doğru</span> cevap verdiniz.</p>
+            <p className="text-gray-500 mb-8">
+              {percentage >= 80 ? "Harika! Dijital güvenlik konusunda çok bilgilisiniz." : percentage >= 60 ? "İyi bir başlangıç! Biraz daha pratik yaparak bilginizi artırabilirsiniz." : "Endişelenmeyin! Rehberimizi okuyarak bilginizi geliştirebilirsiniz."}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onClick={resetQuiz} className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl gradient-primary text-white font-semibold shadow-lg hover:-translate-y-0.5 transition-all">Tekrar Dene</button>
+              <a href="/ebeveyn" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gray-100 text-gray-700 font-semibold hover:bg-gray-200 transition-colors">Rehbere Dön</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const question = quizQuestions[currentQuestion];
+
+  return (
+    <div className="min-h-screen">
+      <section className="section-padding bg-gradient-to-b from-indigo-50 to-white pb-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-4">Quiz & Testler</h1>
+          <p className="text-lg text-gray-600">Dijital güvenlik bilginizi test edin!</p>
+        </div>
+      </section>
+
+      <section className="px-4 pb-16">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-gray-600">Soru {currentQuestion + 1} / {quizQuestions.length}</span>
+              <span className="text-sm font-medium text-emerald-600">Puan: {score}</span>
+            </div>
+            <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="h-full gradient-primary rounded-full transition-all duration-500" style={{ width: `${((currentQuestion + 1) / quizQuestions.length) * 100}%` }} />
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{question.question}</h2>
+            <div className="space-y-3 mb-6">
+              {question.options.map((option, i) => {
+                let btnClass = "border-gray-200 hover:border-blue-300 hover:bg-blue-50";
+                if (showResult) {
+                  if (i === question.correctIndex) btnClass = "border-emerald-400 bg-emerald-50 text-emerald-900";
+                  else if (i === selectedAnswer) btnClass = "border-red-400 bg-red-50 text-red-900";
+                  else btnClass = "border-gray-200 opacity-50";
+                }
+                return (
+                  <button key={i} onClick={() => handleAnswer(i)} disabled={showResult} className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-all ${btnClass}`}>
+                    <div className="flex items-center gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-sm font-bold text-gray-500 shrink-0">{String.fromCharCode(65 + i)}</span>
+                      <span className="font-medium">{option}</span>
+                      {showResult && i === question.correctIndex && <svg className="w-5 h-5 text-emerald-600 ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>}
+                      {showResult && i === selectedAnswer && i !== question.correctIndex && <svg className="w-5 h-5 text-red-600 ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {showResult && (
+              <div className="p-4 rounded-xl bg-blue-50 border border-blue-100 mb-6">
+                <p className="text-sm text-blue-800">{question.explanation}</p>
+              </div>
+            )}
+
+            {showResult && (
+              <button onClick={nextQuestion} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl gradient-primary text-white font-semibold shadow-md hover:-translate-y-0.5 transition-all">
+                {currentQuestion < quizQuestions.length - 1 ? "Sonraki Soru" : "Sonuçları Gör"}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+              </button>
+            )}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

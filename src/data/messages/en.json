@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Social Media Safety - Parent Guide",
+    "description": "Interactive social media safety guide for parents and children"
+  },
+  "nav": {
+    "home": "Home",
+    "parent": "Parent Guide",
+    "child": "Kids Section",
+    "quiz": "Quiz & Tests",
+    "emergency": "Emergency"
+  },
+  "home": {
+    "title": "Social Media Safety",
+    "subtitle": "Your guide to staying safe in the digital world",
+    "description": "Learn how to use social media safely. Separate sections for parents and children, interactive tests, and practical tips.",
+    "selectRole": "Select the option that best describes you",
+    "parentCard": {
+      "title": "I'm a Parent",
+      "description": "Guides, setting checklists, and communication tips to ensure your child's digital safety.",
+      "button": "Go to Parent Guide"
+    },
+    "childCard": {
+      "title": "I'm a Kid / Teen",
+      "description": "Learn to stay safe on social media! Practice with fun quizzes, tips, and scenarios.",
+      "button": "Go to Kids Section"
+    },
+    "stats": {
+      "title": "Digital Safety in Turkey",
+      "children_online": "78% of children use social media",
+      "cyberbullying": "1 in 3 children faces cyberbullying",
+      "privacy": "65% of teens don't know privacy settings",
+      "screen_time": "Average daily screen time: 4.5 hours"
+    }
+  },
+  "common": {
+    "back": "Back",
+    "next": "Next",
+    "learn_more": "Learn More",
+    "loading": "Loading..."
+  }
+}

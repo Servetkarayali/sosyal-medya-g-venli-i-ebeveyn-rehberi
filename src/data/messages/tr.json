@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "title": "Sosyal Medya Güvenliği - Ebeveyn Rehberi",
+    "description": "Ebeveynler ve çocuklar için etkileşimli sosyal medya güvenlik rehberi"
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "parent": "Ebeveyn Rehberi",
+    "child": "Çocuk Bölümü",
+    "quiz": "Quiz & Testler",
+    "emergency": "Acil Durum"
+  },
+  "home": {
+    "title": "Sosyal Medya Güvenliği",
+    "subtitle": "Dijital dünyada güvende kalmak için rehberiniz",
+    "description": "Sosyal medyayı güvenli bir şekilde kullanmayı öğrenin. Ebeveynler ve çocuklar için ayrı bölümler, etkileşimli testler ve pratik ipuçları.",
+    "selectRole": "Sizi en iyi tanımlayan seçeneği belirleyin",
+    "parentCard": {
+      "title": "Ben Ebeveyn'im",
+      "description": "Çocuğunuzun dijital güvenliğini sağlamak için rehberler, ayar kontrol listeleri ve iletişim ipuçları.",
+      "button": "Ebeveyn Rehberine Git"
+    },
+    "childCard": {
+      "title": "Ben Çocuğum / Gencim",
+      "description": "Sosyal medyada güvende kalmayı öğren! Eğlenceli quizler, ipuçları ve senaryolarla pratik yap.",
+      "button": "Çocuk Bölümüne Git"
+    },
+    "stats": {
+      "title": "Türkiye'de Dijital Güvenlik",
+      "children_online": "Çocukların %78'i sosyal medya kullanıyor",
+      "cyberbullying": "Her 3 çocuktan 1'i siber zorbalığa maruz kalıyor",
+      "privacy": "Gençlerin %65'i gizlilik ayarlarını bilmiyor",
+      "screen_time": "Ortalama günlük ekran süresi: 4.5 saat"
+    }
+  },
+  "common": {
+    "back": "Geri",
+    "next": "İleri",
+    "learn_more": "Daha Fazla Bilgi",
+    "loading": "Yükleniyor..."
+  }
+}
