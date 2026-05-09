@@ -9,35 +9,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: "#f0f7ff",
-          100: "#e0efff",
-          200: "#b9dfff",
-          300: "#7cc4ff",
-          400: "#36a5ff",
-          500: "#0c87f2",
-          600: "#006acf",
-          700: "#0054a8",
-          800: "#04488a",
-          900: "#0a3d72",
-        },
-        accent: {
-          orange: "#ff7a3d",
-          green: "#22c55e",
-          purple: "#8b5cf6",
-          pink: "#ec4899",
-        },
+        cream: "#fef8ec",
+        ink: "#0a0a0a",
+        hot: "#ff2e63",
+        electric: "#0047ff",
+        lime: "#d4ff00",
+        mustard: "#ffb800",
+        mint: "#a0f0c0",
+        peach: "#ffb3a3",
+        sky: "#8ecae6",
       },
       fontFamily: {
-        sans: ["system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
-      },
-      borderRadius: {
-        "2xl": "1rem",
-        "3xl": "1.5rem",
+        sans: ["system-ui", "-apple-system", "sans-serif"],
+        display: ['"Times New Roman"', "Georgia", "serif"],
+        mono: ['"SF Mono"', "Menlo", "Consolas", "monospace"],
       },
       boxShadow: {
-        "card": "0 2px 12px rgba(0,0,0,0.06)",
-        "card-hover": "0 8px 30px rgba(0,0,0,0.10)",
+        "brut": "6px 6px 0 0 #0a0a0a",
+        "brut-lg": "10px 10px 0 0 #0a0a0a",
+        "brut-sm": "3px 3px 0 0 #0a0a0a",
+        "brut-hot": "6px 6px 0 0 #ff2e63",
+        "brut-lime": "6px 6px 0 0 #d4ff00",
+      },
+      animation: {
+        "marquee": "marquee 30s linear infinite",
+        "spin-slow": "spin 12s linear infinite",
+        "wiggle": "wiggle 3s ease-in-out infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-2deg)" },
+          "50%": { transform: "rotate(2deg)" },
+        },
       },
     },
   },

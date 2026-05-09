@@ -3,149 +3,259 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="section-spacing">
-        <div className="section-wrapper">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-brand-600 font-semibold text-sm mb-4">Aileler için dijital güvenlik rehberi</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-[1.1] tracking-tight mb-6">
-              Çocuğunuz internette güvende mi?
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-10 max-w-2xl mx-auto">
-              Sosyal medya platformlarındaki riskleri anlayın, pratik adımlar atın. Ebeveynler ve çocuklar için ayrı bölümler, interaktif testler.
+      {/* ============ HERO — Magazine cover ============ */}
+      <section className="relative border-b-2 border-ink overflow-hidden">
+        <div className="wrap pt-12 sm:pt-20 pb-20">
+          <div className="grid grid-cols-12 gap-4 sm:gap-6 items-start">
+            {/* Sol: issue metadata */}
+            <div className="col-span-12 md:col-span-3 flex md:flex-col gap-3 md:gap-2 text-xs font-mono uppercase tracking-widest">
+              <div className="px-2 py-1 border border-ink inline-block w-fit">Vol. 01</div>
+              <div className="px-2 py-1 border border-ink inline-block w-fit">2025</div>
+              <div className="px-2 py-1 bg-hot text-white inline-block w-fit">Güncel</div>
+            </div>
+
+            {/* Orta: dev başlık */}
+            <div className="col-span-12 md:col-span-9">
+              <h1 className="font-display font-bold italic leading-[0.9] tracking-tight">
+                <span className="block text-6xl sm:text-8xl md:text-[9rem]">Çocuğum</span>
+                <span className="block text-6xl sm:text-8xl md:text-[9rem] text-hot">
+                  <span className="not-italic font-sans font-black text-ink text-4xl sm:text-6xl align-middle">⁝</span>{" "}
+                  telefonda
+                </span>
+                <span className="block text-6xl sm:text-8xl md:text-[9rem]">
+                  ne yapıyor<span className="text-electric">?</span>
+                </span>
+              </h1>
+            </div>
+          </div>
+
+          {/* Alt şerit */}
+          <div className="mt-12 pt-6 border-t-2 border-ink grid grid-cols-12 gap-6 items-center">
+            <div className="col-span-12 md:col-span-7">
+              <p className="text-base sm:text-lg leading-relaxed max-w-xl">
+                Sosyal medya çocuklarınızın hayatının bir parçası. Riskleri bilmeniz,{" "}
+                <span className="bg-lime px-1">korkmanız için değil</span>, doğru soruları sorabilmeniz için.
+              </p>
+            </div>
+            <div className="col-span-12 md:col-span-5 flex flex-wrap gap-3">
+              <Link
+                href="/ebeveyn"
+                className="brut-btn bg-ink text-cream hover:bg-hot hover:border-hot transition-colors"
+                style={{ boxShadow: "6px 6px 0 0 #d4ff00" }}
+              >
+                Rehber →
+              </Link>
+              <Link
+                href="/risk-hesapla"
+                className="brut-btn bg-cream text-ink hover:bg-lime transition-colors"
+                style={{ boxShadow: "6px 6px 0 0 #0a0a0a" }}
+              >
+                Risk Skorunu Öğren
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Rotated floating sticker */}
+        <div className="absolute top-16 right-8 hidden lg:flex w-28 h-28 bg-lime border-2 border-ink items-center justify-center font-display italic text-xl font-bold rotate-12 animate-wiggle" style={{ boxShadow: "6px 6px 0 0 #0a0a0a" }}>
+          <span className="text-center leading-tight">Yeni<br/><span className="text-hot">2025</span></span>
+        </div>
+      </section>
+
+      {/* ============ TICKER ============ */}
+      <section className="bg-lime border-b-2 border-ink py-4 overflow-hidden">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="flex items-center gap-8 mx-8">
+              <span className="font-display italic text-2xl font-bold">%78 çocuk sosyal medyada</span>
+              <span className="text-2xl">✦</span>
+              <span className="font-display italic text-2xl font-bold">1/3 siber zorbalığa maruz</span>
+              <span className="text-2xl">✦</span>
+              <span className="font-display italic text-2xl font-bold">4.5 saat günlük ekran</span>
+              <span className="text-2xl">✦</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============ İKİ YOL — Asimetrik kartlar ============ */}
+      <section className="border-b-2 border-ink py-20">
+        <div className="wrap">
+          <div className="flex items-end justify-between mb-12 gap-4 flex-wrap">
+            <div>
+              <p className="text-xs font-mono uppercase tracking-widest text-hot mb-2">// Bölüm 01</p>
+              <h2 className="font-display italic font-bold text-5xl sm:text-6xl leading-none">
+                Kime göre<br/>arıyorsun?
+              </h2>
+            </div>
+            <p className="font-mono text-xs uppercase tracking-widest text-ink/50 max-w-xs">
+              Her yaş grubu için ayrı. Aynı bilgiyi hem anne babaya hem çocuğa aynı şekilde anlatmıyoruz.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/ebeveyn" className="w-full sm:w-auto px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-colors text-center">
-                Rehberi İncele
-              </Link>
-              <Link href="/quiz" className="w-full sm:w-auto px-8 py-4 border border-gray-200 hover:border-brand-300 text-gray-700 hover:text-brand-600 font-semibold rounded-xl transition-colors text-center">
-                Bilgini Test Et
-              </Link>
-            </div>
           </div>
 
-          {/* Görsel alan */}
-          <div className="mt-16 relative">
-            <div className="bg-gradient-to-br from-brand-50 to-blue-50 rounded-3xl p-8 sm:p-12 border border-brand-100">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-                <div className="bg-white rounded-2xl p-6 shadow-card">
-                  <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-accent-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                    </svg>
+          <div className="grid grid-cols-12 gap-6">
+            {/* Ebeveyn kartı - büyük */}
+            <Link href="/ebeveyn" className="col-span-12 md:col-span-7 group">
+              <div className="brut-card p-8 sm:p-10 relative overflow-hidden h-full">
+                <div className="absolute top-4 right-4 text-[120px] font-display italic font-bold text-lime leading-none -rotate-6">01</div>
+                <div className="relative">
+                  <div className="inline-block px-3 py-1 bg-ink text-cream text-xs font-mono uppercase tracking-widest mb-4">
+                    Ebeveyn
                   </div>
-                  <p className="text-2xl font-bold text-gray-900">%78</p>
-                  <p className="text-sm text-gray-500 mt-1">Çocuklar sosyal medyada</p>
-                </div>
-                <div className="bg-white rounded-2xl p-6 shadow-card">
-                  <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                    </svg>
+                  <h3 className="font-display italic font-bold text-4xl sm:text-5xl leading-tight mb-4">
+                    Çocuğumu nasıl<br/>korurum?
+                  </h3>
+                  <p className="text-sm text-ink/70 leading-relaxed mb-6 max-w-md">
+                    Platform ayarları, siber zorbalık belirtileri, ekran süresi yönetimi ve çocukla konuşma rehberi.
+                  </p>
+                  <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider group-hover:gap-4 transition-all">
+                    Rehberi Aç
+                    <span className="w-8 h-8 bg-ink text-lime flex items-center justify-center text-lg">→</span>
                   </div>
-                  <p className="text-2xl font-bold text-gray-900">1/3</p>
-                  <p className="text-sm text-gray-500 mt-1">Siber zorbalığa maruz</p>
                 </div>
-                <div className="bg-white rounded-2xl p-6 shadow-card">
-                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <p className="text-2xl font-bold text-gray-900">4.5 saat</p>
-                  <p className="text-sm text-gray-500 mt-1">Günlük ekran süresi</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* İki Yol */}
-      <section className="section-spacing bg-gray-50">
-        <div className="section-wrapper">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Kime yardımcı olalım?</h2>
-            <p className="text-gray-500 text-lg">İhtiyacınıza uygun bölümü seçin.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <Link href="/ebeveyn" className="group">
-              <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
-                <div className="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand-200 transition-colors">
-                  <svg className="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Ebeveynler İçin</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-4">Gizlilik ayarları, siber zorbalık belirtileri, ekran süresi yönetimi ve çocukla iletişim rehberi.</p>
-                <span className="text-brand-600 text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Rehbere git <span aria-hidden="true">&rarr;</span>
-                </span>
               </div>
             </Link>
 
-            <Link href="/cocuk" className="group">
-              <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
-                <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-green-200 transition-colors">
-                  <svg className="w-7 h-7 text-accent-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+            {/* Çocuk kartı - küçük, sağa offsetli */}
+            <Link href="/cocuk" className="col-span-12 md:col-span-5 group md:mt-12">
+              <div className="brut-card p-8 bg-hot text-white border-ink h-full relative overflow-hidden">
+                <div className="absolute -bottom-4 -right-4 text-[100px] font-display italic font-bold text-white/10 leading-none">02</div>
+                <div className="relative">
+                  <div className="inline-block px-3 py-1 bg-cream text-ink text-xs font-mono uppercase tracking-widest mb-4">
+                    Çocuk / Genç
+                  </div>
+                  <h3 className="font-display italic font-bold text-3xl sm:text-4xl leading-tight mb-4">
+                    Güvende kalmak<br/>eğlenceli mi?
+                  </h3>
+                  <p className="text-sm text-white/80 leading-relaxed mb-6">
+                    Senaryolar, kısa testler, altın kurallar. Sıkıcı ders değil, oyun gibi.
+                  </p>
+                  <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider group-hover:gap-4 transition-all">
+                    Başla
+                    <span className="w-8 h-8 bg-cream text-hot flex items-center justify-center text-lg">→</span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Çocuklar ve Gençler</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-4">Güvenlik kuralları, eğlenceli senaryolar ve kısa bilgi testleri ile öğren.</p>
-                <span className="text-accent-green text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Bölüme git <span aria-hidden="true">&rarr;</span>
-                </span>
               </div>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Neler Var */}
-      <section className="section-spacing">
-        <div className="section-wrapper">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Neler bulacaksınız?</h2>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto">Her şey tek bir yerde, adım adım anlatılıyor.</p>
+      {/* ============ İSTATİSTİK — Editorial layout ============ */}
+      <section className="bg-ink text-cream border-b-2 border-ink py-20 relative overflow-hidden">
+        <div className="wrap relative">
+          <p className="text-xs font-mono uppercase tracking-widest text-hot mb-3">// Bölüm 02 · Gerçekler</p>
+          <h2 className="font-display italic font-bold text-5xl sm:text-7xl mb-16 leading-none">
+            Rakamlar ne<br/><span className="text-lime">söylüyor?</span>
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-2 divide-cream/20">
+            <div className="pb-8 md:pb-0 md:pr-8">
+              <p className="font-display italic font-bold text-7xl sm:text-8xl leading-none text-lime mb-3">%78</p>
+              <p className="text-sm uppercase tracking-wider font-bold mb-2">Çocuk aktif</p>
+              <p className="text-xs text-cream/60 leading-relaxed">Türkiye&apos;deki çocukların büyük çoğunluğu sosyal medya platformlarını kullanıyor.</p>
+            </div>
+            <div className="py-8 md:py-0 md:px-8">
+              <p className="font-display italic font-bold text-7xl sm:text-8xl leading-none text-hot mb-3">1/3</p>
+              <p className="text-sm uppercase tracking-wider font-bold mb-2">Zorbalığa maruz</p>
+              <p className="text-xs text-cream/60 leading-relaxed">Her üç çocuktan biri hayatında en az bir kez siber zorbalıkla karşılaşıyor.</p>
+            </div>
+            <div className="pt-8 md:pt-0 md:pl-8">
+              <p className="font-display italic font-bold text-7xl sm:text-8xl leading-none text-mustard mb-3">4.5<span className="text-3xl">s</span></p>
+              <p className="text-sm uppercase tracking-wider font-bold mb-2">Günlük ekran</p>
+              <p className="text-xs text-cream/60 leading-relaxed">Gençlerin ortalama günlük ekran süresi — okul ve uyku dışında.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ ARAÇLAR — Sticker stili ============ */}
+      <section className="border-b-2 border-ink py-20 bg-cream relative">
+        <div className="wrap">
+          <div className="mb-12">
+            <p className="text-xs font-mono uppercase tracking-widest text-hot mb-2">// Bölüm 03</p>
+            <h2 className="font-display italic font-bold text-5xl sm:text-7xl leading-none">
+              Ne var<br/>elimizde?
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {[
-              { title: "Platform Rehberleri", desc: "Instagram, TikTok, YouTube, Snapchat ayarları", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", color: "brand" },
-              { title: "İnteraktif Quiz", desc: "16 soru ile bilginizi test edin", icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z", color: "purple" },
-              { title: "Risk Hesaplayıcı", desc: "10 soruda güvenlik puanınızı öğrenin", icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z", color: "orange" },
-              { title: "Acil Durum", desc: "Tehlike anında ne yapacağınız", icon: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z", color: "red" },
-            ].map((item, i) => {
-              const bgMap: Record<string, string> = { brand: "bg-brand-100 text-brand-600", purple: "bg-purple-100 text-accent-purple", orange: "bg-orange-100 text-accent-orange", red: "bg-red-100 text-red-500" };
-              return (
-                <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${bgMap[item.color]}`}>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
-                    </svg>
-                  </div>
-                  <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-500">{item.desc}</p>
+              { title: "Platform Rehberi", desc: "IG · TikTok · YouTube · Snap", href: "/platformlar", bg: "bg-sky", rotate: "-rotate-1" },
+              { title: "16 Soruluk Quiz", desc: "Bilgini test et", href: "/quiz", bg: "bg-mustard", rotate: "rotate-1" },
+              { title: "Risk Hesaplayıcı", desc: "10 soruda skor", href: "/risk-hesapla", bg: "bg-mint", rotate: "-rotate-1" },
+              { title: "Acil Durum", desc: "Tehlike anı", href: "/acil-durum", bg: "bg-hot text-white", rotate: "rotate-1" },
+            ].map((item, i) => (
+              <Link key={i} href={item.href} className={`block ${item.rotate} hover:rotate-0 transition-transform`}>
+                <div className={`${item.bg} border-2 border-ink p-5 h-full`} style={{ boxShadow: "6px 6px 0 0 #0a0a0a" }}>
+                  <div className="text-4xl mb-3 font-display italic font-bold">0{i + 1}</div>
+                  <h3 className="font-bold text-base uppercase leading-tight mb-1">{item.title}</h3>
+                  <p className="text-xs opacity-70 mb-4">{item.desc}</p>
+                  <div className="flex items-center gap-1 text-xs font-bold uppercase">Aç <span>→</span></div>
                 </div>
-              );
-            })}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-spacing bg-brand-500">
-        <div className="section-wrapper text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Hemen başlayın</h2>
-          <p className="text-brand-100 text-lg mb-8 max-w-xl mx-auto">Ücretsiz kaydolun, çocuğunuzla birlikte güvenli internet kullanımını keşfedin.</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/kayit" className="w-full sm:w-auto px-8 py-4 bg-white text-brand-600 font-semibold rounded-xl hover:bg-brand-50 transition-colors text-center">
-              Ücretsiz Kayıt Ol
+      {/* ============ SORU-CEVAP STRIP ============ */}
+      <section className="border-b-2 border-ink py-20 relative overflow-hidden">
+        <div className="wrap">
+          <div className="grid grid-cols-12 gap-8 items-start">
+            <div className="col-span-12 md:col-span-5 md:sticky md:top-24">
+              <p className="text-xs font-mono uppercase tracking-widest text-hot mb-3">// Sıkça sorulan</p>
+              <h2 className="font-display italic font-bold text-5xl sm:text-6xl leading-none mb-6">
+                Soru.<br/>Cevap.
+              </h2>
+              <div className="w-24 h-1 bg-ink mb-4" />
+              <p className="text-sm leading-relaxed text-ink/70">
+                Her hafta onlarca ebeveynden aynı soruları alıyoruz. İşte en çok merak edilenler.
+              </p>
+            </div>
+
+            <div className="col-span-12 md:col-span-7 space-y-6">
+              {[
+                { q: "Çocuğumun telefonunu kontrol etmek doğru mu?", a: "Evet — ama şeffafça. Gizlice değil. Çocuğunuzla birlikte kuralları belirlemek, gizlice takip etmekten çok daha etkili." },
+                { q: "Kaç yaşında sosyal medya hesabı açabilir?", a: "Çoğu platform 13 yaş. Ama hazır olup olmadığı sayıdan çok olgunlukla ilgili." },
+                { q: "Çocuğum siber zorbalığa uğruyor. Ne yapmalıyım?", a: "Kanıt topla → engelle → bildir → dinle. Detaylı rehber Acil Durum bölümünde." },
+              ].map((item, i) => (
+                <div key={i} className="brut-card p-6 group">
+                  <div className="flex items-start gap-4">
+                    <div className="font-display italic font-bold text-4xl text-hot leading-none shrink-0">
+                      0{i + 1}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-lg mb-2 leading-tight">{item.q}</h3>
+                      <p className="text-sm text-ink/70 leading-relaxed">{item.a}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FINAL CTA — Poster ============ */}
+      <section className="bg-lime border-b-2 border-ink py-20 relative overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <span className="font-display italic text-[25vw] font-bold text-ink/5 whitespace-nowrap">BAŞLA</span>
+        </div>
+        <div className="wrap relative text-center">
+          <p className="text-xs font-mono uppercase tracking-widest mb-6">// Son çağrı</p>
+          <h2 className="font-display italic font-bold text-6xl sm:text-8xl md:text-9xl leading-none mb-6">
+            Bugün<br/>başlayın.
+          </h2>
+          <p className="text-base sm:text-lg mb-10 max-w-xl mx-auto">
+            Ücretsiz. Kart gerekmez. 3 dakikada hazır.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link href="/kayit" className="brut-btn bg-ink text-cream text-base px-8 py-4" style={{ boxShadow: "6px 6px 0 0 #ff2e63" }}>
+              Kaydol →
             </Link>
-            <Link href="/fiyatlandirma" className="w-full sm:w-auto px-8 py-4 border border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors text-center">
-              Planları İncele
+            <Link href="/fiyatlandirma" className="brut-btn bg-cream text-ink text-base px-8 py-4" style={{ boxShadow: "6px 6px 0 0 #0a0a0a" }}>
+              Planlar
             </Link>
           </div>
         </div>

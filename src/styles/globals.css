@@ -7,27 +7,51 @@
     @apply scroll-smooth;
   }
   body {
-    @apply font-sans antialiased text-gray-800 bg-white;
+    @apply font-sans antialiased text-ink bg-cream;
+    background-image: radial-gradient(circle at 1px 1px, rgba(10,10,10,0.08) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+  ::selection {
+    background: #d4ff00;
+    color: #0a0a0a;
   }
 }
 
 @layer components {
-  .section-wrapper {
+  .wrap {
     @apply max-w-6xl mx-auto px-5 sm:px-8;
   }
-  .section-spacing {
-    @apply py-16 sm:py-24;
+
+  .brut-card {
+    @apply bg-white border-2 border-ink transition-all duration-150;
+    box-shadow: 6px 6px 0 0 #0a0a0a;
   }
+  .brut-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 0 #0a0a0a;
+  }
+
+  .brut-btn {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-ink font-bold text-sm transition-all duration-150;
+  }
+  .brut-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 0 #0a0a0a !important;
+  }
+
   .section-padding {
     @apply px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20;
   }
   .gradient-primary {
-    @apply bg-gradient-to-br from-blue-500 to-indigo-600;
+    @apply bg-ink text-white;
   }
   .gradient-safety {
-    @apply bg-gradient-to-br from-emerald-400 to-teal-500;
+    @apply bg-lime text-ink;
   }
   .gradient-warning {
-    @apply bg-gradient-to-br from-amber-400 to-orange-500;
+    @apply bg-hot text-white;
+  }
+  .card-hover {
+    @apply transition-all duration-150;
   }
 }
