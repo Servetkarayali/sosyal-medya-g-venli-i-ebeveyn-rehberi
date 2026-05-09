@@ -1,12 +1,3 @@
-import createMiddleware from "next-intl/middleware";
-import { locales, defaultLocale } from "./lib/i18n";
-
-export default createMiddleware({
-  locales,
-  defaultLocale,
-  localePrefix: "as-needed",
-});
-
-export const config = {
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
-};
+// Middleware placeholder - next-intl will be activated after npm install
+// For now, no middleware processing needed
+export { };

@@ -7,7 +7,11 @@ const navigation = [
   { key: "home", href: "/", label: "Ana Sayfa" },
   { key: "parent", href: "/ebeveyn", label: "Ebeveyn Rehberi" },
   { key: "child", href: "/cocuk", label: "Çocuk Bölümü" },
+  { key: "platforms", href: "/platformlar", label: "Platformlar" },
   { key: "quiz", href: "/quiz", label: "Quiz & Testler" },
+  { key: "risk", href: "/risk-hesapla", label: "Risk Skoru" },
+  { key: "contract", href: "/sozlesme", label: "Sözleşme" },
+  { key: "emergency", href: "/acil-durum", label: "Acil Durum" },
 ];
 
 const languages = [
@@ -34,9 +38,9 @@ export default function Header() {
             <span className="text-lg font-bold text-gray-900 hidden sm:block">Dijital Güvenlik</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navigation.map((item) => (
-              <Link key={item.key} href={item.href} className="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+              <Link key={item.key} href={item.href} className={`px-2.5 py-2 rounded-lg text-xs font-medium transition-colors ${item.key === "emergency" ? "text-red-600 hover:text-red-700 hover:bg-red-50" : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"}`}>
                 {item.label}
               </Link>
             ))}
@@ -61,7 +65,7 @@ export default function Header() {
               )}
             </div>
 
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -74,10 +78,10 @@ export default function Header() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 border-t border-gray-100 mt-2 pt-4">
+          <div className="lg:hidden pb-4 border-t border-gray-100 mt-2 pt-4">
             <nav className="flex flex-col gap-1">
               {navigation.map((item) => (
-                <Link key={item.key} href={item.href} className="px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link key={item.key} href={item.href} className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${item.key === "emergency" ? "text-red-600 hover:text-red-700 hover:bg-red-50" : "text-gray-600 hover:text-blue-600 hover:bg-blue-50"}`} onClick={() => setIsMobileMenuOpen(false)}>
                   {item.label}
                 </Link>
               ))}
