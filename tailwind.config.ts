@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,50 +9,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Çocuk dostu, sıcak ve güven veren palet
-        family: {
-          sky: "#7dd3fc",       // Açık gök mavisi
-          ocean: "#38bdf8",     // Okyanus
-          lavender: "#c4b5fd",  // Lavanta
-          lilac: "#e9d5ff",     // Açık lila
-          peach: "#fed7aa",     // Şeftali
-          coral: "#fca5a5",     // Mercan
-          mint: "#6ee7b7",      // Nane yeşili
-          leaf: "#34d399",      // Yaprak
-          sun: "#fde047",       // Güneş sarısı
-          cloud: "#f1f5f9",     // Bulut beyazı
+        brand: {
+          50: "#f0f7ff",
+          100: "#e0efff",
+          200: "#b9dfff",
+          300: "#7cc4ff",
+          400: "#36a5ff",
+          500: "#0c87f2",
+          600: "#006acf",
+          700: "#0054a8",
+          800: "#04488a",
+          900: "#0a3d72",
         },
-        primary: {
-          50: "#f0f9ff",
-          100: "#e0f2fe",
-          200: "#bae6fd",
-          300: "#7dd3fc",
-          400: "#38bdf8",
-          500: "#0ea5e9",
-          600: "#0284c7",
-          700: "#0369a1",
-          800: "#075985",
-          900: "#0c4a6e",
-        },
-        safety: {
-          green: "#10b981",
-          yellow: "#f59e0b",
-          red: "#ef4444",
-          blue: "#0ea5e9",
+        accent: {
+          orange: "#ff7a3d",
+          green: "#22c55e",
+          purple: "#8b5cf6",
+          pink: "#ec4899",
         },
       },
       fontFamily: {
-        sans: ["Nunito", "Inter", "system-ui", "sans-serif"],
+        sans: ["system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
       },
       borderRadius: {
-        "4xl": "2rem",
-        "5xl": "2.5rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
       },
       boxShadow: {
-        "soft": "0 4px 20px -2px rgba(0, 0, 0, 0.06)",
-        "glow-blue": "0 0 30px -5px rgba(56, 189, 248, 0.3)",
-        "glow-purple": "0 0 30px -5px rgba(196, 181, 253, 0.4)",
-        "glow-green": "0 0 30px -5px rgba(110, 231, 183, 0.3)",
+        "card": "0 2px 12px rgba(0,0,0,0.06)",
+        "card-hover": "0 8px 30px rgba(0,0,0,0.10)",
       },
     },
   },
