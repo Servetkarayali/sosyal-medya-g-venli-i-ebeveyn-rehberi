@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
 @layer base {
   html {
     @apply scroll-smooth;
   }
   body {
-    @apply font-sans antialiased;
+    @apply font-sans antialiased bg-white text-gray-800;
   }
   main {
     @apply transition-opacity duration-300;
@@ -15,23 +17,51 @@
 }
 
 @layer components {
+  /* Çocuk dostu yumuşak kartlar */
   .card-hover {
-    @apply transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl;
+    @apply transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-soft;
   }
+
+  /* Aile dostu gradientler - daha yumuşak, daha sıcak */
   .gradient-primary {
-    @apply bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700;
+    @apply bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-500;
   }
   .gradient-safety {
-    @apply bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600;
+    @apply bg-gradient-to-br from-emerald-300 via-teal-400 to-cyan-500;
   }
   .gradient-warning {
-    @apply bg-gradient-to-br from-amber-400 via-orange-500 to-red-500;
+    @apply bg-gradient-to-br from-amber-300 via-orange-400 to-rose-400;
   }
+  .gradient-family {
+    @apply bg-gradient-to-br from-violet-300 via-purple-400 to-fuchsia-400;
+  }
+  .gradient-warm {
+    @apply bg-gradient-to-br from-orange-200 via-rose-200 to-pink-300;
+  }
+
   .section-padding {
     @apply px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20;
   }
+
+  /* Yumuşak köşeli, çocuk dostu butonlar */
+  .btn-family {
+    @apply px-6 py-3 rounded-2xl font-bold text-sm shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  /* Oyunsu arka plan desenleri */
+  .bg-dots {
+    background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .bg-waves {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23f0f9ff' fill-opacity='0.5' d='M0,192L48,186.7C96,181,192,171,288,186.7C384,203,480,245,576,234.7C672,224,768,160,864,149.3C960,139,1056,181,1152,197.3C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+  }
 }
 
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
