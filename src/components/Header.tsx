@@ -9,9 +9,9 @@ const navigation = [
   { key: "parent", href: "/ebeveyn", label: "Ebeveyn Rehberi" },
   { key: "child", href: "/cocuk", label: "Çocuk Bölümü" },
   { key: "platforms", href: "/platformlar", label: "Platformlar" },
-  { key: "quiz", href: "/quiz", label: "Quiz & Testler" },
+  { key: "quiz", href: "/quiz", label: "Quiz" },
   { key: "risk", href: "/risk-hesapla", label: "Risk Skoru" },
-  { key: "contract", href: "/sozlesme", label: "Sözleşme" },
+  { key: "pricing", href: "/fiyatlandirma", label: "Fiyatlar" },
   { key: "emergency", href: "/acil-durum", label: "Acil Durum" },
 ];
 
@@ -49,10 +49,25 @@ export default function Header() {
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
+
+            {/* Auth Buttons */}
+            <Link
+              href="/giris"
+              className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+            >
+              Giriş Yap
+            </Link>
+            <Link
+              href="/kayit"
+              className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold gradient-primary text-white shadow-sm hover:shadow-md transition-all"
+            >
+              Kayıt Ol
+            </Link>
+
             <div className="relative">
-              <button onClick={() => setIsLangOpen(!isLangOpen)} className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+              <button onClick={() => setIsLangOpen(!isLangOpen)} className="flex items-center gap-1 px-2 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">
                 🇹🇷
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -87,6 +102,15 @@ export default function Header() {
                   {item.label}
                 </Link>
               ))}
+              {/* Mobile Auth */}
+              <div className="border-t border-gray-100 mt-3 pt-3 flex gap-2 px-4">
+                <Link href="/giris" className="flex-1 text-center py-2.5 rounded-lg border-2 border-gray-200 text-sm font-medium text-gray-700 hover:border-blue-300 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
+                  Giriş Yap
+                </Link>
+                <Link href="/kayit" className="flex-1 text-center py-2.5 rounded-lg gradient-primary text-white text-sm font-semibold shadow-sm" onClick={() => setIsMobileMenuOpen(false)}>
+                  Kayıt Ol
+                </Link>
+              </div>
             </nav>
           </div>
         )}
